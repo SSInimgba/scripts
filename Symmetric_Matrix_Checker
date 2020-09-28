@@ -1,0 +1,24 @@
+def MatrixChallenge(strArr):
+"This function takes in a string list, creates a matrix and checks if matrix is symmetrical "
+  import numpy as np
+
+  #Number of rows
+  indicator = "<>"
+  rows = sum(s.count(indicator) for s in strArr)
+  rows = rows + 1
+
+  #Creating Matrix
+  while indicator in strArr: strArr.remove(indicator)
+  strArr = [int(i) for i in strArr]
+
+  strArr = [strArr[i:i + rows] for i in range(0, len(strArr), rows)]
+  strArr = np.array(strArr)
+
+  #Check if matrix is symmetric
+  if np.allclose(strArr, strArr.T) == True : 
+    output = "symmetric"
+  else:
+    output = "not symmetric"
+  
+  return output
+
